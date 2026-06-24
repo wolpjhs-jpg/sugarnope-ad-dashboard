@@ -19,7 +19,7 @@
   function chip(k, v) { return '<span class="chip"><b>' + k + "</b> " + v + "</span>"; }
 
   /* ---------- goal ---------- */
-  var g = D.goal, cap = 1000;
+  var g = D.goal, cap = 1200;
   $("goalNum").textContent = pct(g.currentPct);
   $("goalFill").style.width = Math.min(100, (g.currentPct / cap) * 100) + "%";
   $("goalTick").style.left = (g.targetPct / cap) * 100 + "%";
@@ -30,8 +30,8 @@
   var s = D.summary;
   var kpis = [
     { k: "광고비", v: won(s.spend), d: "총 집행", ic: "ti-coin" },
-    { k: "장바구니 전환값", v: won(s.atcValue), d: "광고 기여", ic: "ti-shopping-cart" },
-    { k: "ROAS", v: pct(s.roasPct), d: "전환값 ÷ 광고비", ic: "ti-trending-up" },
+    { k: "웹사이트 전환값", v: won(s.convValue), d: "장바구니+결제시작", ic: "ti-shopping-cart" },
+    { k: "ROAS", v: pct(s.roasPct), d: "전환값 ÷ 지출", ic: "ti-trending-up" },
     { k: "장바구니 건수", v: num(s.atcCount) + "건", d: "건당 " + won(s.cpa), ic: "ti-basket" },
     { k: "CTR", v: pct(s.ctrPct), d: "클릭 " + num(s.clicks), ic: "ti-click" },
     { k: "CPC", v: won(s.cpc), d: "링크클릭 " + num(s.linkClicks), ic: "ti-pointer" },

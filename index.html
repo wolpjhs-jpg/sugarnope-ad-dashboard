@@ -29,8 +29,8 @@
         <div class="big">
           <span class="num ok" id="goalNum">—</span>
           <div>
-            <div class="sub">장바구니 전환값 기준 ROAS · 목표 300%</div>
-            <div class="sub">하한선 — 장바구니 전환값만 반영(결제시작·완료 광고 기여금액 미제공)</div>
+            <div class="sub">웹사이트 전환값 기준 ROAS · 목표 300%</div>
+            <div class="sub">장바구니 ₩2,897,030 + 결제시작 ₩642,440 = ₩3,539,470 ÷ 지출 ₩318,066</div>
           </div>
         </div>
         <span class="badge-ok"><i class="ti ti-circle-check"></i> 목표 300% 초과 달성</span>
@@ -58,7 +58,7 @@
       <div class="legend">
         <span><span class="sw" style="background:#378add"></span>광고비</span>
         <span><span class="sw" style="background:#1d9e75"></span>장바구니 전환값</span>
-        <span><span class="ln" style="background:#ba7517"></span>ROAS %</span>
+        <span><span class="ln" style="background:#ba7517"></span>ROAS %(장바구니 기준)</span>
       </div>
       <div class="cano"><canvas id="trendChart" role="img" aria-label="일별 광고비, 장바구니 전환값, ROAS 추이"></canvas></div>
     </section>
@@ -120,10 +120,11 @@
     <p class="foot">
       <b>데이터 출처</b> · Meta Ads API 직접 조회 (계정 2479603099134351, 픽셀 SugarNope). 갱신 <span id="pulled">—</span>.
       집행 기간 2026-06-19~24. 통화 KRW. 기여 1일 조회/7일 클릭.<br>
-      <b>측정 주의</b> · ① 본 ROAS는 광고 기여 '장바구니 담기' 전환값÷광고비로, 정의하신 (장바구니+결제시작+결제완료) 합산의 <b>하한선</b>입니다.
-      ② 결제시작·결제완료의 광고 기여 '금액'과 구매 ROAS는 Meta API에서 제공되지 않아(캠페인 최적화 이벤트=장바구니) 별도 표기했습니다.
-      ③ 퍼널 수치는 픽셀 사이트 전체(광고+자연 유입)이며 광고 기여분이 아닙니다.
-      ④ 장바구니+결제시작+결제완료 합산 정의는 동일 매출을 중복 계산하므로, 실집행 판단은 구매 기준 ROAS를 메인으로 권장합니다.
+      <b>측정 주의</b> · ① 본 ROAS는 웹사이트 전환값(장바구니 ₩2,897,030 + 결제시작 ₩642,440 = ₩3,539,470) ÷ 지출 ₩318,066 = 1,112.8%입니다. 결제시작 값은 Ads Manager '웹사이트 전환값' 컬럼 확인치.
+      ② 구매(결제완료) 전환값은 광고 귀속 0원이라 합산에서 제외(구매 ROAS "Not available"). 캠페인 OFF 상태로 지출은 ₩318,066에서 고정입니다.
+      ③ 일별 추이의 ROAS 라인은 일자별 결제시작 값이 분해되지 않아 장바구니 기준으로 표기합니다.
+      ④ 퍼널 수치는 픽셀 사이트 전체(광고+자연 유입)이며 광고 기여분이 아닙니다.
+      ⑤ 장바구니+결제시작 합산은 동일 세션을 중복 계산할 수 있어, 실매출 판단은 구매 기준 ROAS를 메인으로 권장합니다.
     </p>
   </div>
 

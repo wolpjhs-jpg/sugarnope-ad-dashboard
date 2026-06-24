@@ -25,14 +25,17 @@ window.SUGARNOPE_DATA = {
     attribution: "1일 조회 / 7일 클릭",
   },
 
-  goal: { metric: "장바구니 전환값 기준 ROAS", targetPct: 300, currentPct: 911 },
+  goal: { metric: "웹사이트 전환값 기준 ROAS", targetPct: 300, currentPct: 1112.8 },
 
-  // 계정 합계 (실측)
+  // 계정 합계 (실측). 전환값은 Ads Manager '웹사이트 전환값' 컬럼 기준.
   summary: {
     spend: 318066,
-    atcValue: 2897030,
+    atcValue: 2897030,       // 웹사이트 장바구니 추가 전환값
+    icValue: 642440,         // 결제 시작 전환값 (Ads Manager 확인값)
+    purchaseValue: 0,        // 구매 전환값 — 광고 귀속 0
+    convValue: 3539470,      // 웹사이트 전환값 합 = 장바구니 + 결제시작
     atcCount: 376,
-    roasPct: 911,            // atcValue / spend
+    roasPct: 1112.8,         // convValue / spend = 3,539,470 / 318,066
     cpa: 846,                // 장바구니 건당 비용
     impressions: 11519,
     reach: 9218,
