@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sugarnope · Meta 광고 성과 대시보드</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.3.0/dist/tabler-icons.min.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="head">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>Sugarnope · 광고 성과</h1>
+          <p id="subline">로딩 중…</p>
+        </div>
+      </div>
+      <div class="meta" id="metaChips"></div>
+    </header>
+
+    <!-- GOAL -->
+    <div class="goal">
+      <div class="row">
+        <div class="big">
+          <span class="num ok" id="goalNum">—</span>
+          <div>
+            <div class="sub">장바구니 전환값 기준 ROAS · 목표 300%</div>
+            <div class="sub">하한선 — 장바구니 전환값만 반영(결제시작·완료 광고 기여금액 미제공)</div>
+          </div>
+        </div>
+        <span class="badge-ok"><i class="ti ti-circle-check"></i> 목표 300% 초과 달성</span>
+      </div>
+      <div class="bar">
+        <span id="goalFill"></span>
+        <span class="tick" id="goalTick"></span>
+      </div>
+      <div class="scale">
+        <span>0%</span>
+        <span id="goalTargetLbl" style="position:relative;transform:translateX(-50%)">목표 300%</span>
+        <span id="goalCurLbl">—</span>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpis" id="kpis"></div>
+
+    <!-- DAILY TREND -->
+    <section>
+      <div class="sec-h">
+        <h2>일별 추이</h2>
+        <span class="note">광고비 · 장바구니 전환값 · ROAS — 실집행 4일(6/20–6/23, 전체 광고비의 99%)</span>
+      </div>
+      <div class="legend">
+        <span><span class="sw" style="background:#378add"></span>광고비</span>
+        <span><span class="sw" style="background:#1d9e75"></span>장바구니 전환값</span>
+        <span><span class="ln" style="background:#ba7517"></span>ROAS %</span>
+      </div>
+      <div class="cano"><canvas id="trendChart" role="img" aria-label="일별 광고비, 장바구니 전환값, ROAS 추이"></canvas></div>
+    </section>
+
+    <!-- BREAKDOWN -->
+    <section>
+      <div class="sec-h">
+        <h2>세부 분석</h2>
+        <div class="tabs" id="tabs"></div>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th><th>광고비</th><th>노출</th><th>CTR</th>
+              <th>장바구니</th><th>건당비용</th><th>전환값</th><th>ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="bdBody"></tbody>
+        </table>
+      </div>
+      <p class="minihint" style="margin-top:10px">
+        ROAS 색상 — <span style="color:var(--good);font-weight:700">초록 ≥1,000%</span> ·
+        검정 300–1,000% · <span style="color:var(--danger);font-weight:700">빨강 &lt;300%</span>.
+        모든 수치는 광고 기여 장바구니 기준.
+      </p>
+    </section>
+
+    <!-- FUNNEL + INSIGHTS -->
+    <section>
+      <div class="grid2">
+        <div>
+          <div class="sec-h"><h2>전환 퍼널</h2><span class="note">픽셀 사이트 전체 · 6/15–6/24 <span class="tag-site">광고+자연</span></span></div>
+          <div class="cano sm"><canvas id="funnelChart" role="img" aria-label="픽셀 퍼널: 페이지뷰부터 구매까지"></canvas></div>
+          <div class="funnel-rates">
+            <div class="rate"><div class="k">장바구니→결제시작</div><div class="v" id="rateA">—</div></div>
+            <div class="rate"><div class="k">결제시작→구매</div><div class="v" id="rateB">—</div></div>
+            <div class="rate"><div class="k">장바구니→구매</div><div class="v warn" id="rateC">—</div></div>
+          </div>
+          <div class="callout">
+            <i class="ti ti-alert-triangle"></i>
+            <div>광고 효율(장바구니 ROAS 911%)은 충분하지만, <b>장바구니→구매 전환이 0.71%</b>로 새고 있습니다.
+            집행 기간 <b>광고 귀속 구매는 사실상 0건</b> — 진짜 과제는 광고가 아니라 결제 전환입니다.</div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-h"><h2>핵심 발견</h2><span class="note"><span class="tag-real">실측</span></span></div>
+          <ul class="card-list" id="findings"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOMMENDATIONS -->
+    <section>
+      <div class="sec-h"><h2>실행 제안</h2><span class="note">데이터 기반 우선순위</span></div>
+      <ul class="card-list insights" id="recs"></ul>
+    </section>
+
+    <p class="foot">
+      <b>데이터 출처</b> · Meta Ads API 직접 조회 (계정 2479603099134351, 픽셀 SugarNope). 갱신 <span id="pulled">—</span>.
+      집행 기간 2026-06-19~24. 통화 KRW. 기여 1일 조회/7일 클릭.<br>
+      <b>측정 주의</b> · ① 본 ROAS는 광고 기여 '장바구니 담기' 전환값÷광고비로, 정의하신 (장바구니+결제시작+결제완료) 합산의 <b>하한선</b>입니다.
+      ② 결제시작·결제완료의 광고 기여 '금액'과 구매 ROAS는 Meta API에서 제공되지 않아(캠페인 최적화 이벤트=장바구니) 별도 표기했습니다.
+      ③ 퍼널 수치는 픽셀 사이트 전체(광고+자연 유입)이며 광고 기여분이 아닙니다.
+      ④ 장바구니+결제시작+결제완료 합산 정의는 동일 매출을 중복 계산하므로, 실집행 판단은 구매 기준 ROAS를 메인으로 권장합니다.
+    </p>
+  </div>
+
+  <script src="./vendor/chart.umd.js"></script>
+  <script src="./assets/data.js"></script>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
